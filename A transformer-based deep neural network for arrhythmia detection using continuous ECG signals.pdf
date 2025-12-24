@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sci-Net: A transformer-based deep neural network for arrhythmia detection using continuous ECG signals</title>
+    </head>
+    
+    <body>
+
+        <style type = "text/css">
+
+            html {font-size: 20px}
+
+            body {margin: 0; padding: 0; width: 99.9vw; height: fit-content; overflow: hidden; display: flex; align-items: flex-start; font-family: 'Courier New', Courier, monospace; }
+
+            .menu { width: 300px; height: 100vh; padding: 44px; display: flex; justify-content: space-between; flex-direction: column; align-items: center; }
+
+            .upper {justify-content: normal;}
+
+            .article { margin: 0; font-size: 18px; }
+            .article .year { margin-right: 12px; padding: 8px; border-radius: 8px; color: white; background-color: darkcyan; font-weight: bold; width: fit-content; font-size: 16px; }
+            .article .journal { color: darkcyan; font-weight: bold; }
+            .article .title { margin: 24px 0; font-size: 24px; color: darkcyan; color: black }
+            .article .authors { margin: 22px 0 }
+            .article .abstract { font-size: 18px; max-height: 50vh; overflow-y: hidden; }
+            .article .doi a { color: #888; text-decoration: none; }
+            .article .doi a:hover { text-decoration: underline; }
+
+            .pdf { flex-grow: 1; }
+            .pdf iframe { width: 100%; height: 100vh }
+            
+            .buttons a {background: green; padding: 12px; color: white; font-weight: bold; border: solid 3px green; border-radius: 12px; font-size: 18px; cursor: pointer; text-decoration: none; display: inline-block;}
+            .buttons a:hover { background-color: darkorchid; color: white; border-color: darkorchid; }
+
+            .members { margin-top: 44px; }
+            .member { display: flex; align-items: center; margin-top: 8px; font-size: 16px; color: #777 }
+            .member img { width: 64px; border-radius: 50%; margin-right: 18px; border: solid 1px #eee }
+            .member a { text-decoration: none; color: #222; font-size: 18px; padding: 4px 2px; border-radius: 8px; }
+            .member a:hover { background-color: lightcyan; }
+
+            .logo {width: fit-content; margin-bottom: 88px; font-size: 39px; line-height: 39px; font-weight: bold; border: solid 4px darkcyan;   border-radius: 11px; }
+            .logo a {color: darkcyan; text-decoration: none; padding: 22px; display: block; }
+            .logo a:hover {color: white; background: darkcyan;}
+
+            .columns {display: flex; align-items: center;}
+
+        </style>
+
+        <div class = "menu">
+
+            <div class = "upper">
+
+            <div class = "buttons">
+
+            </div>
+
+            <div class = "article">
+                <div class = "columns">
+                    <span class = "year">2022</span>
+                    <span class = "journal">Computers in Biology and Medicine</span>
+                </div>
+                <div class = "title">A transformer-based deep neural network for arrhythmia detection using continuous ECG signals</div>
+                <div class = "authors"></div>
+                <div class = "doi"><a target = "_blank" href = "//doi.org/10.1016/j.compbiomed.2022.105325">10.1016/j.compbiomed.2022.105325</a></div>
+            </div>
+
+            <div class = "members">
+
+                
+
+                
+                    <div class = "member">
+                        <img src = "/avatars/LFP4DI12OI1P8QOF4A.png">
+                        <div>
+                            uploaded <br>
+                                <a target = "_blank" href = "/@mvtokarev">mvtokarev</a>
+                        </div>
+                    </div>
+                
+
+            </div>
+
+            </div>
+
+            <div class = "logo">
+                <a href = "/">
+                    sci<br>
+                    net</a>
+            </div>
+
+        </div>
+
+        <div class = "pdf">
+            <iframe src = "//pdf.sci-net.xyz/fce84b1591c1f5dbe4a4b4dd44dcacbc/A-transformer-based-deep-neural-network-for-arrhythmia-detection-using-continuous-ECG-signals.pdf#view=FitH&navpanes=0"></iframe>
+        </div>
+
+    </body>
+</html>
