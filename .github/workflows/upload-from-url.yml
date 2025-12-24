@@ -1,36 +1,52 @@
-# This is a basic workflow to help you get started with GitHub Actions
-
+# 工作流的名称，在 GitHub Actions 页面显示
 name: CI
 
-# Controls when the workflow will run
+# 触发条件：仅允许手动触发（不会在 push 或 PR 时自动运行）
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    # 定义用户在手动运行时需要输入的参数
+    inputs:
+      file_url:
+        description: 'File URL to download'  # 输入框提示文字
+        required: true                       # 必填
+        type: string                         # 输入类型为文本
+      filename:
+        description: 'Filename to save as'
+        required: true
+        type: string
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 定义一个名为 "upload" 的任务（job）
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  upload:
+    # 在 Ubuntu 最新虚拟机上运行（免费、常用）
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # 任务包含的步骤（steps）
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # 第一步：检出（checkout）你的仓库代码
       - uses: actions/checkout@v4
+        with:
+          # 使用一个具有写权限的 token（需提前在 Secrets 中配置）
+          token: ${{ secrets.GH_PAT }}
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # 第二步：从用户提供的 URL 下载文件
+      - name: Download file
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          # 使用 curl 下载文件，保存为用户指定的文件名
+          curl -fL -o "${{ github.event.inputs.filename }}" "${{ github.event.inputs.file_url }}"
+
+      # 第三步：将下载的文件提交并推送到仓库
+      - name: Commit and push
+        run: |
+          # 配置 Git 用户信息（必须，否则 commit 失败）
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          
+          # 添加所有更改（包括新下载的文件）
+          git add .
+          
+          # 提交更改，提交信息中包含文件名
+          git commit -m "Add ${{ github.event.inputs.filename }} from URL"
+          
+          # 推送回当前分支
+          git push
